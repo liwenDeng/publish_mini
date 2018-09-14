@@ -1,0 +1,83 @@
+/* pages/category/index.wxss */
+.total_bar {
+  width: 100%;
+  background-color: white;
+  justify-content: space-between;
+  height: 90rpx;
+  align-items: center;
+  display: flex;
+  border-bottom-color: gray;
+  border-bottom-style: solid;
+  border-bottom-width: 0.5rpx;
+}
+.totol_icon {
+  width: 30rpx;
+  height: 30rpx;
+  display: inline-flex;
+  padding-left: 30rpx;
+}
+.total_bar_textcontainer {
+  display: inline-flex;
+  line-height: 30rpx;
+  padding-right: 30rpx;
+}
+.normal_text {
+  font-size: 28rpx;
+  color: #343333;
+}
+.red_text{
+  font-size: 28rpx;
+  color: red;
+}
+
+.cates_button_container{
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.cate_button{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 26rpx;
+  color: gray;
+  padding-top: 20rpx;
+  padding-bottom: 30rpx;
+}
+.cate_button_img{
+  width: 70rpx;
+  height: 70rpx;
+}
+.cate_button_name{
+  padding-top: 10rpx;
+}
+
+.notice_bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  margin-top: 14rpx;
+  margin-bottom: 14rpx;
+  height: 70rpx;
+  width: 100%;
+}
+.notice_title{
+  display: inline-block;
+  padding-left: 24rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.notice_swiper {
+  flex: 1;
+  height: 100%;
+  padding-left: 24rpx;
+}
+.notice_content{
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}

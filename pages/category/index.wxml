@@ -1,0 +1,29 @@
+<!--pages/category/index.wxml-->
+<view>
+  <view class='total_bar'>
+    <image class='totol_icon' src='../../static/img/tab_category.png'></image>
+    <view class='total_bar_textcontainer'>
+      <text class='normal_text'>总浏览量：</text>
+      <text class='red_text'>206.10万</text>
+      <text class='normal_text' style='padding-left:15rpx'>总帖子量：</text>
+      <text class='red_text'>41438</text>
+    </view>
+  </view>
+  <view class='cates_button_container'>
+    <view class='cate_button' wx:for="{{[1,2,3,4,5,6,7,8,9,10]}}">
+      <image class='cate_button_img' src='../../static/img/tab_category.png'></image>
+      <view class='cate_button_name'>分类名称</view>
+    </view>
+  </view>
+
+  <view class='notice_bar'>
+    <text class='notice_title'>公告</text>
+    <swiper class='notice_swiper' autoplay='true' interval='2000' vertical='false' circular='true'>
+      <block wx:for="{{[1, 2, 3]}}">
+        <swiper-item class='notice_content'>
+          <view>{{item}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
