@@ -12,16 +12,16 @@
   "tabBar": {
     "list": [
       {
-      "pagePath": "pages/category/index",
-      "text": "分类信息",
-      "iconPath": "static/img/tab_category.png",
-      "selectedIconPath": "static/img/tab_category_press.png"
+        "pagePath": "pages/category/index",
+        "text": "分类信息",
+        "iconPath": "static/img/tab_category.png",
+        "selectedIconPath": "static/img/tab_category_press.png"
       },
       {
-      "pagePath": "pages/publish/index",
-      "text": "发布",
-      "iconPath": "static/img/tab_add.png",
-      "selectedIconPath": "static/img/tab_add_press.png"
+        "pagePath": "pages/publish/index",
+        "text": "发布",
+        "iconPath": "static/img/tab_add.png",
+        "selectedIconPath": "static/img/tab_add_press.png"
       }
     ]
   }
