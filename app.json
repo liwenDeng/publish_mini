@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/category/index",
-    "pages/publish/index"
+    "pages/publish/index",
+    "common/component/cell/cell"
   ],
   "window": {
     "backgroundTextStyle": "dark",

@@ -4,6 +4,6 @@
     "wux-tabs": "../../dist/tabs/index",
     "wux-tab": "../../dist/tab/index",
     "wux-badge": "../../dist/badge/index",
-    "wux-tag": "../../dist/tag/index"
+    "cate-cell": "../../common/component/cell/cell"
   }
 }

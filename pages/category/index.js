@@ -106,4 +106,7 @@ Page({
       index,
     })
   },
+  onPhoneCall: function(e) {
+    console.log('点击了拨打电话按钮');
+  },
 })
