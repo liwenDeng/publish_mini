@@ -1,4 +1,4 @@
-// pages/publish/index.js
+// pages/publish/detail.js
 Page({
 
   /**
@@ -63,10 +63,7 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onPublishCate: function(e) {
-    console.log("发布信息", e.detail.cate);
-    wx.navigateTo({
-      url: 'detail'
-    })
-  },
+  onAddPic: function(e) {
+    console.log('添加图片')
+  }
 })

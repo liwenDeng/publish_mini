@@ -3,7 +3,8 @@
     "pages/category/index",
     "pages/publish/index",
     "common/component/cell/cell",
-    "common/component/cates_grid/index"
+    "common/component/cates_grid/index",
+    "pages/publish/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",

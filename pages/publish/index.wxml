@@ -14,5 +14,5 @@
     <image class='join_arrow'></image>
   </view>
   <text class='choose_cate'>———    请选择您要发布的栏目    ———</text>
-  <cates-grid></cates-grid>
+  <cates-grid bindcateTap='onPublishCate'></cates-grid>
 </view>

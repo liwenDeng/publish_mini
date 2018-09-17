@@ -38,13 +38,14 @@
 
 .cell_thumbnail_container {
   padding-top: 14rpx;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .cell_thumbnail {
   width: 165rpx;
-  height: 165rpx;
+  height: 160rpx;
   background-color: red;
+  margin-right: 12rpx;
 }
 
 .cell_content {

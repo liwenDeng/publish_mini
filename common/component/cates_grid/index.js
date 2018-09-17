@@ -10,9 +10,10 @@ Component({
   methods: {
     // 这里是一个自定义方法
     onCateTap: function (e) {
-      var eventDetail = {} // detail对象，提供给事件监听函数
+      var cate = e.currentTarget.dataset.cate
+      console.log(cate);
+      var eventDetail = {cate} // detail对象，提供给事件监听函数
       var eventOption = {} // 触发事件的选项
-      console.log(e.currentTarget.dataset.cate);
       this.triggerEvent('cateTap', eventDetail, eventOption);
     }
   }
