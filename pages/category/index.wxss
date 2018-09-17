@@ -35,34 +35,6 @@
   color: red;
 }
 
-.cates_button_container {
-  background: white;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.cate_button {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 26rpx;
-  color: gray;
-  padding-top: 20rpx;
-  padding-bottom: 30rpx;
-}
-
-.cate_button_img {
-  width: 70rpx;
-  height: 70rpx;
-}
-
-.cate_button_name {
-  padding-top: 10rpx;
-}
-
 .notice_bar {
   display: flex;
   align-items: center;
@@ -94,6 +66,7 @@
 }
 
 /* tab 样式设置 tabbar目录下设置 */
+
 .cates_list {
   height: 1000rpx;
   width: 100%;

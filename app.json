@@ -2,7 +2,8 @@
   "pages": [
     "pages/category/index",
     "pages/publish/index",
-    "common/component/cell/cell"
+    "common/component/cell/cell",
+    "common/component/cates_grid/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

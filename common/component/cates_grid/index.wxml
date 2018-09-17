@@ -1,0 +1,7 @@
+<!--common/component/cates_grid/index.wxml-->
+<view class='cates_button_container'>
+  <view class='cate_button' wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="cate" style='background-color: #df6666' data-cate='{{cate}}' bindtap='onCateTap'>
+    <image class='cate_button_img'></image>
+    <view class='cate_button_name'>分类名称</view>
+  </view>
+</view>

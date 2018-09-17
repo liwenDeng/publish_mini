@@ -1,2 +1,18 @@
 <!--pages/publish/index.wxml-->
-<text>pages/publish/index.wxml</text>
+<view class="page">
+  <view class='statement'>
+    <text class='statement_text'>免责声明：平台发布的所有信息（收费、免费）；平台只发布、展示，与平台本身无关，平台不负任何责任。</text>
+  </view>
+  <view class='join'>
+    <view class='join_left'>
+      <image class='join_icon'></image>
+      <view class='join_title_container'>
+        <text class='join_title_text'>我是商家，入住XX</text>
+        <text class='join_detail_text'>超低成本，网络宣传，简单发布，方便快捷！</text>
+      </view>
+    </view>
+    <image class='join_arrow'></image>
+  </view>
+  <text class='choose_cate'>———    请选择您要发布的栏目    ———</text>
+  <cates-grid></cates-grid>
+</view>

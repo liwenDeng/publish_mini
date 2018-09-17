@@ -1,0 +1,32 @@
+/* common/component/cates_grid/index.wxss */
+.cates_button_container {
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.cate_button {
+  width: 210rpx;
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.cate_button_img {
+  width: 65rpx;
+  height: 65rpx;
+  background: white;
+}
+
+.cate_button_name {
+  padding-top: 10rpx;
+  font-size: 26rpx;
+  color: white;
+}

@@ -1,9 +1,10 @@
 {
-  "navigationBarTitleText": "Tabs",
+  "navigationBarTitleText": "分类信息",
   "usingComponents": {
     "wux-tabs": "../../dist/tabs/index",
     "wux-tab": "../../dist/tab/index",
     "wux-badge": "../../dist/badge/index",
-    "cate-cell": "../../common/component/cell/cell"
+    "cate-cell": "../../common/component/cell/cell",
+    "cates-grid":"../../common/component/cates_grid/index"
   }
 }
