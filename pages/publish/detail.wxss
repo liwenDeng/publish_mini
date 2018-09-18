@@ -1,32 +1,117 @@
 /* pages/publish/detail.wxss */
-.content{
+.content {
   background-color: white;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   padding: 20rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
-.content_title{
-  font-size: 28rpx; 
+
+.content_title {
+  font-size: 28rpx;
 }
-.content_area{
-  font-size: 24rpx;
+
+.content_area {
+  font-size: 28rpx;
   width: 100%;
   height: 310rpx;
   padding-top: 36rpx;
   margin-bottom: 20rpx;
 }
-.pic_container{
+
+.pic_container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
+  box-sizing: border-box;
 }
-.add_pic{
+
+.added_pic {
+  width: 165rpx;
+  height: 150rpx;
+  margin-top: 12rpx;
+  margin-right: 12rpx;
+  position: relative;
+}
+
+.delete_btn {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  background-color: red;
+}
+
+.add_pic_btn {
   width: 165rpx;
   height: 150rpx;
   background-color: red;
-  margin-right: 12rpx;
   margin-top: 12rpx;
+}
+.input_form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+}
+.topSwitchContainer{
+  width: 100%;
+}
+.topDetail{
+  display: flex;
+  align-items: center;
+  color: #db4f4f;
+  font-size: 14px;
+  line-height: 24px;
+  background-color: white;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border-top-width: 1px;
+  border-top-color: #eee;
+  border-top-style: solid;
+  width: 100%;
+}
+.topDetailTitle{
+  display: inline-block;
+  width: 90px;
+}
+.instructions{
+  width: 100%;
+  margin-left: 24rpx;
+  margin-top: 24rpx;
+  margin-bottom: 200rpx;
+  display: flex;
+  font-size: 28rpx;
+  align-items: center;
+}
+.agreeIcon{
+  width: 40rpx;
+  height: 40rpx;
+  background-color: red;
+}
+.agreeNormlText{
+  display: inline-block;
+  color: #808080;
+  margin-left: 24rpx;
+}
+.agreeRedText {
+  display: inline-block;
+  color: #db4f4f;
+}
+.nextStep{
+  width: 100%;
+  background-color: #db4f4f;
+  position: fixed;
+  bottom: 0;
+  color: white;
+  font-size: 36rpx;
+  border-radius: 0;
+  z-index: 100;
 }

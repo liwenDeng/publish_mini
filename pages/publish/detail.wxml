@@ -1,12 +1,37 @@
 <!--pages/publish/detail.wxml-->
 <view class='page'>
-  <view class='content'>
-    <text class='content_title'>内容描述</text>
-    <textarea placeholder='请输入内容描述' class='content_area' placeholder-style="color:#737373;" />
-    <view class='pic_container'>
-      <image class='add_pic' wx:for="{{[1,2,3,4,5]}}"></image>
-      <image class='add_pic' bindtap="onAddPic"></image>
+  <form bindsubmit="formSubmit">
+    <!-- <button class='nextStep' formType='submit'>下一步</button> -->
+    <view class='content'>
+      <text class='content_title'>内容描述</text>
+      <textarea name='content' placeholder='请输入内容描述' class='content_area' placeholder-style="color:#737373;" />
+      <view class='pic_container'>
+        <image class='added_pic' wx:for="{{pics}}" wx:for-item="pic" src='{{pic}}'>
+          <image class='delete_btn' data-picindex="{{index}}" bindtap='deletePic'></image>
+        </image>
+        <image class='add_pic_btn' bindtap="onAddPic"></image>
+      </view>
     </view>
-  </view>
-  <view></view>
+    <!-- <view class='input_form'>
+      <van-field name='linkman' value="{{linkman}}" clearable label="联系人：" placeholder="请输入联系人" />
+      <van-field name='phone' clearable label="联系方式：" type="number" placeholder="请输入您的联系方式" />
+      <van-field name='location' value="{{location}}" clearable label="具体位置：" placeholder="请输入联系人" icon="location" bind:click-icon="onClickLocation" />
+      <van-field name='area' value="{{area}}" is-link label="发布地区：" disabled='true' bindtap='onClickPublishArea' />
+      <van-field value="{{price}}元（{{area}}）" disabled='true' border="false" label="发布费用：" />
+    </view> -->
+
+    <view class='topSwitchContainer'>
+      <van-switch-cell title="是否置顶" checked="{{ isTop }}" bind:change="onTopChange" />
+      <view class='topDetail' hidden="{{!isTop}}">
+        <text class='topDetailTitle'>置顶：</text>
+        <text class='topDetailContent'>{{topDetail}}</text>
+      </view>
+    </view>
+
+    <view class='instructions' bindtap='onInstructionsClick'>
+      <image class='agreeIcon' catchtap="onAgreeChange"></image>
+      <text class='agreeNormlText'>我已阅读并同意</text>
+      <text class='agreeRedText'>《发布须知》</text>
+    </view>
+  </form>
 </view>
