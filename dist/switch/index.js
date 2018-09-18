@@ -1,50 +1,36 @@
-import { isPresetColor } from '../helpers/colors'
+import { create } from '../common/create';
 
-Component({
-    externalClasses: ['wux-class'],
-    behaviors: ['wx://form-field'],
-    options: {
-        multipleSlots: true,
-    },
-    data: {
-        style: '',
-    },
-    properties: {
-        value: {
-            type: Boolean,
-            value: false,
-        },
-        disabled: {
-            type: Boolean,
-            value: false,
-        },
-        color: {
-            type: String,
-            value: 'balanced',
-            observer(newVal) {
-                this.updateStyle(isPresetColor(newVal))
-            },
-        },
-    },
-    methods: {
-        onTap(e) {
-            const { value, disabled } = this.data
+create({
+  field: true,
 
-            if (disabled) {
-                return false
-            }
+  classes: ['node-class'],
 
-            this.triggerEvent('change', {
-                value: !value,
-            })
-        },
-        updateStyle(color) {
-            this.setData({
-                style: `border-color: ${color}; background-color: ${color};`,
-            })
-        },
+  props: {
+    loading: Boolean,
+    disabled: Boolean,
+    checked: {
+      type: Boolean,
+      observer(value) {
+        this.setData({ value });
+      }
     },
-    attached() {
-        this.updateStyle(isPresetColor(this.data.color))
-    },
-})
+    size: {
+      type: String,
+      value: '30px'
+    }
+  },
+
+  attached() {
+    this.setData({ value: this.data.checked });
+  },
+
+  methods: {
+    onClick() {
+      if (!this.data.disabled && !this.data.loading) {
+        const checked = !this.data.checked;
+        this.$emit('input', checked);
+        this.$emit('change', checked);
+      }
+    }
+  }
+});

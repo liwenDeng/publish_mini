@@ -1,79 +1,58 @@
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
-    relations: {
-        '../cell-group/index': {
-            type: 'parent',
-        },
-    },
-    data: {
-        isLast: false,
-    },
-    properties: {
-        hoverClass: {
-            type: String,
-            value: 'wux-cell--hover',
-        },
-        thumb: {
-            type: String,
-            value: '',
-        },
-        title: {
-            type: String,
-            value: '',
-        },
-        label: {
-            type: String,
-            value: '',
-        },
-        extra: {
-            type: String,
-            value: '',
-        },
-        isLink: {
-            type: Boolean,
-            value: false,
-        },
-        openType: {
-            type: String,
-            value: 'navigateTo',
-        },
-        url: {
-            type: String,
-            value: '',
-        },
-        delta: {
-            type: Number,
-            value: 1,
-        },
-    },
-    methods: {
-        onTap() {
-            const { url, isLink, openType, delta } = this.data
-            const navigate = [
-                'navigateTo',
-                'redirectTo',
-                'switchTab',
-                'navigateBack',
-                'reLaunch',
-            ]
+import { create } from '../common/create';
 
-            this.triggerEvent('click')
+create({
+  classes: [
+    'title-class',
+    'label-class',
+    'value-class'
+  ],
 
-            if (!isLink || !url) {
-                return false
-            } else if (!navigate.includes(openType)) {
-                return console.warn('openType 属性可选值为 navigateTo、redirectTo、switchTab、navigateBack、reLaunch', openType)
-            } else if (openType === 'navigateBack') {
-                return wx[openType].call(wx, { delta })
-            } else {
-                return wx[openType].call(wx, { url })
-            }
-        },
-        updateIsLastElement(isLast) {
-            this.setData({ isLast })
-        },
+  props: {
+    title: null,
+    value: null,
+    url: String,
+    icon: String,
+    label: String,
+    center: Boolean,
+    isLink: Boolean,
+    required: Boolean,
+    clickable: Boolean,
+    titleWidth: String,
+    customStyle: String,
+    linkType: {
+      type: String,
+      value: 'navigateTo'
     },
-})
+    border: {
+      type: Boolean,
+      value: true
+    }
+  },
+
+  computed: {
+    cellClass() {
+      const { data } = this;
+      return this.classNames('custom-class', 'van-cell', {
+        'van-hairline': data.border,
+        'van-cell--center': data.center,
+        'van-cell--required': data.required,
+        'van-cell--clickable': data.isLink || data.clickable
+      });
+    },
+
+    titleStyle() {
+      const { titleWidth } = this.data;
+      return titleWidth ? `max-width: ${titleWidth};min-width: ${titleWidth}` : '';
+    }
+  },
+
+  methods: {
+    onClick() {
+      const { url } = this.data;
+      if (url) {
+        wx[this.data.linkType]({ url });
+      }
+      this.$emit('click');
+    }
+  }
+});

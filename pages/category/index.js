@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    current: '1',
+    active: 0,
     tabs: [{
         key: '1',
         title: '全部',
@@ -94,17 +94,8 @@ Page({
   onShareAppMessage: function() {
 
   },
-  onTabsChange(e) {
-    console.log('onTabsChange', e)
-    const {
-      key
-    } = e.detail
-    const index = this.data.tabs.map((n) => n.key).indexOf(key)
-
-    this.setData({
-      key,
-      index,
-    })
+  onTabChange(event) {
+    this.data.active = event.detail.index + 1;
   },
   onPhoneCall: function(e) {
     console.log('点击了拨打电话按钮');

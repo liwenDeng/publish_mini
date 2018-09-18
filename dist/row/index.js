@@ -1,44 +1,41 @@
-Component({
-	externalClasses: ['wux-class'],
-    relations: {
-        '../col/index': {
-            type: 'child',
-            linked() {
-                this.updateStyle()
-            },
-            linkChanged() {
-                this.updateStyle()
-            },
-            unlinked() {
-                this.updateStyle()
-            },
-        },
-    },
-    properties: {
-        gutter: {
-            value: 0,
-            type: Number,
-            observer: 'updateStyle',
-        },
-    },
-    data: {
-        rowStyle: '',
-    },
-    methods: {
-    	updateStyle(gutter = this.data.gutter) {
-    		const elements = this.getRelationNodes('../col/index')
-            const rowStyle = gutter > 0 ? `margin-left: ${gutter / -2}px; margin-right: ${gutter / -2}px` : ''
-    		const colStyle = gutter > 0 ? `padding-left: ${gutter / 2}px; padding-right: ${gutter / 2}px` : ''
+import { create } from '../common/create';
 
-            if (elements.length > 0) {
-				elements.forEach((element) => {
-				    element.updateStyle(colStyle)
-				})
-            }
+create({
+  relations: {
+    '../col/index': {
+      type: 'descendant',
 
-            this.setData({
-            	rowStyle,
-            })
-    	},
-    },
-})
+      linked(target) {
+        if (this.data.gutter) {
+          target.setGutter(this.data.gutter);
+        }
+      }
+    }
+  },
+
+  props: {
+    gutter: {
+      type: Number,
+      observer: 'setGutter'
+    }
+  },
+
+  ready() {
+    if (this.data.gutter) {
+      this.setGutter();
+    }
+  },
+
+  methods: {
+    setGutter() {
+      const { gutter } = this.data;
+      const margin = `-${Number(gutter) / 2}px`;
+      const style = gutter ? `margin-right: ${margin}; margin-left: ${margin};` : '';
+
+      this.setData({ style });
+      this.getRelationNodes('../col/index').forEach((col) => {
+        col.setGutter(this.data.gutter);
+      });
+    }
+  }
+});

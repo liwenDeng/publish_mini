@@ -1,23 +1,45 @@
-<wux-popup visible="{{ in }}" closable="{{ closable }}" mask="{{ mask }}" mask-closable="{{ maskClosable }}" bind:close="onClose" bind:closed="onClosed">
-    <view slot="header">{{ title }}</view>
-    <view>
-        <text>{{ content }}</text>
-        <view class="wux-popup__input-container" wx:if="{{ prompt }}">
-            <label>
-                <input type="{{ prompt.fieldtype }}" class="wux-popup__input" value="{{ prompt.response }}" password="{{ prompt.password }}" placeholder="{{ prompt.placeholder }}" maxlength="{{ maxlength }}" bindinput="bindinput" />
-            </label>
-        </view>
+<van-popup
+  show="{{ show }}"
+  transition="scale"
+  z-index="{{ zIndex }}"
+  overlay="{{ overlay }}"
+  close-on-click-overlay="{{ closeOnClickOverlay }}"
+  custom-class="van-dialog"
+  bind:close="onClickOverlay"
+>
+  <view wx:if="{{ title }}" class="van-dialog__header {{ !message && !useSlot ? 'van-dialog--isolated' : '' }}">
+    {{ title }}
+  </view>
+  <view class="van-dialog__content" wx:if="{{ message || useSlot }}">
+    <slot wx:if="{{ useSlot }}" />
+    <view wx:elif="{{ message }}" class="van-dialog__message {{ title ? 'van-dialog__message--has-title' : '' }}">
+      {{ message }}
     </view>
-    <view slot="footer" class="wux-popup__buttons {{ verticalButtons ? 'wux-popup__buttons--vertical' : 'wux-popup__buttons--horizontal' }}">
-        <block wx:for="{{ buttons }}" wx:for-item="button" wx:key="">
-            <view
-                class="wux-popup__button {{ 'wux-popup__button--' + (button.type || 'default') }} {{ button.bold ? 'wux-popup__button--bold' : '' }}"
-                hover-class="wux-popup__button--hover"
-                data-index="{{ index }}"
-                bindtap="buttonTapped"
-            >
-                {{ button.text }}
-            </view>
-        </block>
+  </view>
+  <view class="van-hairline--top van-dialog__footer {{ showCancelButton && showConfirmButton ? 'van-dialog__footer--buttons' : '' }}">
+    <view wx:if="{{ showCancelButton }}" class="van-dialog__button">
+      <van-button
+        loading="{{ loading.cancel }}"
+        size="large"
+        custom-class="van-dialog__cancel"
+        bind:click="onCancel"
+      >
+        {{ cancelButtonText }}
+      </van-button>
     </view>
-</wux-popup>
+    <view
+      wx:if="{{ showConfirmButton }}"
+      class="van-dialog__button {{ showCancelButton ? 'van-hairline--left' : '' }}"
+    >
+      <van-button
+        size="large"
+        loading="{{ loading.confirm }}"
+        custom-class="van-dialog__confirm"
+        open-type="{{ confirmButtonOpenType }}"
+        bind:click="onConfirm"
+      >
+        {{ confirmButtonText }}
+      </van-button>
+    </view>
+  </view>
+</van-popup>

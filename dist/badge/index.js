@@ -1,40 +1,27 @@
-Component({
-    externalClasses: ['wux-class', 'wux-class-badge'],
-    properties: {
-        count: {
-            type: Number,
-            value: 0,
-            observer(newVal) {
-                const { overflowCount } = this.data
-                const finalCount = newVal >= overflowCount ? `${overflowCount}+` : newVal
+import { create } from '../common/create';
 
-                this.setData({
-                    finalCount,
-                })
-            },
-        },
-        overflowCount: {
-            type: Number,
-            value: 99,
-        },
-        dot: {
-            type: Boolean,
-            value: false,
-        },
-        showZero: {
-            type: Boolean,
-            value: false,
-        },
-        status: {
-            type: String,
-            value: '',
-        },
-        text: {
-            type: String,
-            value: '',
-        },
+create({
+  relations: {
+    '../badge-group/index': {
+      type: 'ancestor'
+    }
+  },
+
+  props: {
+    info: Number,
+    title: String
+  },
+
+  methods: {
+    onClick() {
+      const group = this.getRelationNodes('../badge-group/index')[0];
+      if (group) {
+        group.setActive(this);
+      }
     },
-    data: {
-        finalCount: 0,
-    },
-})
+
+    setActive(active) {
+      this.setData({ active });
+    }
+  }
+});

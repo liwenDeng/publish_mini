@@ -1,71 +1,104 @@
-import { colors } from '../helpers/colors'
+import { create } from '../common/create';
 
-const defaultColors = {
-    normal: colors.positive,
-    progress: colors.positive,
-    error: colors.assertive,
-    success: colors.balanced,
-}
+create({
+  props: {
+    inactive: {
+      type: Boolean,
+      observer() {
+        this.setPivotStyle();
+        this.setPortionStyle();
+      }
+    },
+    pivotColor: {
+      type: String,
+      observer: 'setPivotStyle'
+    },
+    percentage: {
+      type: Number,
+      observer() {
+        this.setText();
+        this.setPortionStyle();
+      }
+    },
+    showPivot: {
+      type: Boolean,
+      value: true,
+      observer: 'getWidth'
+    },
+    pivotText: {
+      type: String,
+      observer() {
+        this.setText();
+        this.getWidth();
+      }
+    },
+    color: {
+      type: String,
+      value: '#38f',
+      observer() {
+        this.setPivotStyle();
+        this.setPortionStyle();
+      }
+    },
+    textColor: {
+      type: String,
+      value: '#fff',
+      observer: 'setPivotStyle'
+    }
+  },
 
-Component({
-    externalClasses: ['wux-class'],
-    properties: {
-        percent: {
-            type: Number,
-            value: 0,
-            observer: 'updateStyle',
-        },
-        strokeWidth: {
-            type: Number,
-            value: 10,
-            observer: 'updateStyle',
-        },
-        activeColor: {
-            type: String,
-            value: '',
-            observer: 'updateStyle',
-        },
-        backgroundColor: {
-            type: String,
-            value: '#f3f3f3',
-        },
-        status: {
-            type: String,
-            value: 'normal',
-            observer: 'updateStyle',
-        },
-        shape: {
-            type: String,
-            value: 'round',
-        },
-        barStyle: {
-            type: String,
-            value: '',
-        },
-        showInfo: {
-            type: Boolean,
-            value: false,
-        },
-    },
-    data: {
-        width: 0,
-        style: '',
-    },
-    methods: {
-        updateStyle(opts = {}) {
-            const { percent, strokeWidth, activeColor, status } = Object.assign({}, this.data, opts)
-            const width = percent < 0 ? 0 : percent > 100 ? 100 : percent
-            const height = strokeWidth > 0 ? strokeWidth : 10
-            const backgroundColor = activeColor ? activeColor : (defaultColors[status] || defaultColors['normal'])
-            const style = `background-color: ${backgroundColor}; width: ${width}%; height: ${height}px;`
+  data: {
+    pivotWidth: 0,
+    progressWidth: 0
+  },
 
-            this.setData({
-                width,
-                style,
-            })
-        },
+  ready() {
+    this.setText();
+    this.setPivotStyle();
+    this.getWidth();
+  },
+
+  methods: {
+    getCurrentColor() {
+      return this.data.inactive ? '#cacaca' : this.data.color;
     },
-    attached() {
-        this.updateStyle()
+
+    setText() {
+      this.setData({
+        text: this.data.pivotText || this.data.percentage + '%'
+      });
     },
-})
+
+    setPortionStyle() {
+      const width = (this.data.progressWidth - this.data.pivotWidth) * this.data.percentage / 100 + 'px';
+      const background = this.getCurrentColor();
+      this.setData({
+        portionStyle: `width: ${width}; background: ${background}; `
+      });
+    },
+
+    setPivotStyle() {
+      const color = this.data.textColor;
+      const background = this.data.pivotColor || this.getCurrentColor();
+      this.setData({
+        pivotStyle: `color: ${color}; background: ${background}`
+      });
+    },
+
+    getWidth() {
+      this.getRect('.van-progress').then(rect => {
+        this.setData({
+          progressWidth: rect.width
+        });
+        this.setPortionStyle();
+      });
+
+      this.getRect('.van-progress__pivot').then(rect => {
+        this.setData({
+          pivotWidth: rect.width || 0
+        });
+        this.setPortionStyle();
+      });
+    }
+  }
+});

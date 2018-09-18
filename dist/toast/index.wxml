@@ -1,7 +1,30 @@
-<wux-backdrop id="wux-backdrop" transparent />
-<wux-animation-group wux-class="wux-toast" in="{{ in }}" class-names="wux-animate--fadeIn">
-    <view class="wux-toast__bd {{ className }}">
-        <wux-icon wux-class="wux-toast__icon" type="{{ icon }}" size="55" color="{{ color }}" wx:if="{{ icon }}"></wux-icon>
-        <view class="wux-toast__text">{{ text }}</view>
-    </view>
-</wux-animation-group>
+<van-overlay
+  show="{{ show && (mask || forbidClick) }}"
+  mask="{{ mask }}"
+  z-index="{{ zIndex }}"
+/>
+<van-transition
+  show="{{ show }}"
+  custom-style="z-index: {{ zIndex }}"
+  custom-class="van-toast__container"
+>
+  <view
+    class="van-toast van-toast--{{ type === 'text' ? 'text' : 'icon' }} van-toast--{{ position }}"
+    catch:touchmove
+  >
+    <!-- text only -->
+    <view wx:if="{{ type === 'text' }}">{{ message }}</view>
+
+    <!-- with icon -->
+    <block wx:else>
+      <van-loading
+        wx:if="{{ type === 'loading' }}"
+        color="white"
+        type="{{ loadingType }}"
+        custom-class="van-toast__loading"
+      />
+      <van-icon wx:else class="van-toast__icon" name="{{ type }}" />
+      <view wx:if="{{ message }}" class="van-toast__text">{{ message }}</view>
+    </block>
+  </view>
+</van-transition>

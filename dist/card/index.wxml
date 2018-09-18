@@ -1,15 +1,22 @@
-<view class="wux-class wux-card {{ bordered ? 'wux-card--bordered' : '' }} {{ full ? 'wux-card--full' : '' }}">
-    <view class="wux-card__hd">
-        <view class="wux-card__content">
-            <image class="wux-card__thumb" src="{{ thumb }}" mode="aspectFit" style="{{ thumbStyle }}" wx:if="{{ thumb }}" />
-            <text>{{ title }}</text>
-        </view>
-        <view class="wux-card__extra" wx:if="{{ extra }}">{{ extra }}</view>
+<view class="custom-class van-card {{ centered ? 'van-card--center' : '' }}">
+  <view class="van-card__thumb">
+    <image wx:if="{{ thumb }}" src="{{ thumb }}" class="van-card__img thumb-class" />
+    <slot wx:else name="thumb" />
+  </view>
+  <view class="van-card__content">
+    <view wx:if="{{ title || price || price === 0 }}" class="van-card__row">
+      <view wx:if="{{ title }}" class="van-card__title title-class">{{ title }}</view>
+      <view wx:if="{{ price || price === 0 }}" class="van-card__price price-class">{{ currency }} {{ price }}</view>
     </view>
-    <view class="wux-card__bd">
-        <slot name="body"></slot>
+    <slot wx:else name="title" />
+    <view wx:if="{{ desc || num }}" class="van-card__row">
+      <view wx:if="{{ desc }}" class="van-card__desc desc-class">{{ desc }}</view>
+      <view wx:if="{{ num }}" class="van-card__num num-class">x {{ num }}</view>
     </view>
-    <view class="wux-card__ft">
-        <slot name="footer"></slot>
-    </view>
+    <slot wx:else name="desc" />
+    <slot name="tags" />
+  </view>
+  <view class="van-card__footer">
+    <slot name="footer" />
+  </view>
 </view>

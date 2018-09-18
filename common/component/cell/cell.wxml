@@ -6,8 +6,8 @@
       <view class='column_container'>
         <text class='cell_title'>舌尖上的美味传奇</text>
         <view class='row_container'>
-          <wux-tag color="orange">置顶</wux-tag>
-          <wux-tag color="green">个人求职</wux-tag>
+          <van-tag class="tag" plain type="danger">置顶</van-tag >
+          <van-tag class="tag" plain type="primary">个人求职</van-tag >
         </view>
       </view>
     </view>

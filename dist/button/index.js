@@ -1,98 +1,44 @@
-Component({
-    externalClasses: ['wux-class', 'wux-hover-class'],
-    properties: {
-        type: {
-            type: String,
-            value: 'stable',
-        },
-        clear: {
-            type: Boolean,
-            value: false,
-        },
-        block: {
-            type: Boolean,
-            value: false,
-        },
-        full: {
-            type: Boolean,
-            value: false,
-        },
-        outline: {
-            type: Boolean,
-            value: false,
-        },
-        size: {
-            type: String,
-            value: 'default',
-        },
-        disabled: {
-            type: Boolean,
-            value: false,
-        },
-        loading: {
-            type: Boolean,
-            value: false,
-        },
-        formType: {
-            type: String,
-            value: '',
-        },
-        openType: {
-            type: String,
-            value: '',
-        },
-        hoverStopPropagation: {
-            type: Boolean,
-            value: false,
-        },
-        hoverStartTime: {
-            type: Number,
-            value: 20,
-        },
-        hoverStayTime: {
-            type: Number,
-            value: 70,
-        },
-        lang: {
-            type: String,
-            value: 'en',
-        },
-        sessionFrom: {
-            type: String,
-            value: '',
-        },
-        sendMessageTitle: {
-            type: String,
-            value: '',
-        },
-        sendMessagePath: {
-            type: String,
-            value: '',
-        },
-        sendMessageImg: {
-            type: String,
-            value: '',
-        },
-        showMessageCard: {
-            type: Boolean,
-            value: false,
-        },
-    },
+import { create } from '../common/create';
+import { button } from '../mixins/button';
 
-    methods: {
-        onTap() {
-            if (!this.data.disabled) {
-                this.triggerEvent('click')
-            }
-        },
-        bindgetuserinfo(e) {
-            this.triggerEvent('getuserinfo', e.detail)
-        },
-        bindcontact(e) {
-            this.triggerEvent('contact', e.detail)
-        },
-        bindgetphonenumber(e) {
-            this.triggerEvent('getphonenumber', e.detail)
-        },
+create({
+  mixins: [button],
+
+  props: {
+    plain: Boolean,
+    block: Boolean,
+    square: Boolean,
+    loading: Boolean,
+    disabled: Boolean,
+    type: {
+      type: String,
+      value: 'default'
     },
-})
+    size: {
+      type: String,
+      value: 'normal'
+    }
+  },
+
+  computed: {
+    classes() {
+      const { type, size, plain, disabled, loading, square, block } = this.data;
+      return this.classNames(`van-button--${type}`, `van-button--${size}`, {
+        'van-button--block': block,
+        'van-button--plain': plain,
+        'van-button--square': square,
+        'van-button--loading': loading,
+        'van-button--disabled': disabled,
+        'van-button--unclickable': disabled || loading
+      });
+    }
+  },
+
+  methods: {
+    onClick() {
+      if (!this.data.disabled && !this.data.loading) {
+        this.$emit('click');
+      }
+    }
+  }
+});

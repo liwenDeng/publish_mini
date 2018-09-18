@@ -1,54 +1,37 @@
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
-    relations: {
-        '../tabbar/index': {
-            type: 'parent',
-        },
-    },
-    properties: {
-        key: {
-            type: String,
-            value: '',
-        },
-        title: {
-            type: String,
-            value: '',
-        },
-        disabled: {
-            type: Boolean,
-            value: false,
-        },
-    },
-    data: {
-        width: '100%',
-        current: false,
-        index: '0',
-    },
-    methods: {
-        changeCurrent(current, index, theme, length) {
-            const width = 100 / length + '%'
+import { create } from '../common/create';
 
-            this.setData({
-                width,
-                current,
-                theme,
-                index,
-            })
-        },
-        onTap() {
-            const { index, disabled } = this.data
-            const parent = this.getRelationNodes('../tabbar/index')[0]
+create({
+  props: {
+    info: null,
+    icon: String,
+    dot: Boolean
+  },
 
-            if (disabled || !parent) {
-                return false
-            }
+  relations: {
+    '../tabbar/index': {
+      type: 'ancestor'
+    }
+  },
 
-            this.triggerEvent('click', { index })
+  data: {
+    active: false,
+    count: 0
+  },
 
-            parent.setActiveKey(index)
-        },
+  methods: {
+    onClick() {
+      const parent = this.getRelationNodes('../tabbar/index')[0];
+      if (parent) {
+        parent.onChange(this);
+      }
+      this.$emit('click');
     },
-})
+
+    setActive(data) {
+      const { active, count } = this.data;
+      if (active !== data.active || count !== data.count) {
+        this.setData(data);
+      }
+    }
+  }
+});

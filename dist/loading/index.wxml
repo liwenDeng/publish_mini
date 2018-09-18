@@ -1,7 +1,16 @@
-<wux-backdrop id="wux-backdrop" transparent="{{ true }}" />
-<wux-animation-group wux-class="wux-toast" in="{{ in }}" class-names="wux-animate--fadeIn">
-    <view class="wux-toast__bd {{ className }}">
-        <view class="wux-toast__icon wux-toast__icon--loading"></view>
-        <view class="wux-toast__text">{{ text }}</view>
-    </view>
-</wux-animation-group>
+<view
+  class="van-loading custom-class"
+  style="width: {{ size }}; height: {{ size }}"
+>
+  <view
+    class="van-loading__spinner van-loading__spinner--{{ type }}"
+    style="color: {{ color }};"
+  >
+    <view
+      wx:if="{{ type === 'spinner' }}"
+      wx:for="item in 12"
+      wx:key="{{ index }}"
+      class="van-loading__dot"
+    />
+  </view>
+</view>

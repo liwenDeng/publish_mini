@@ -1,38 +1,34 @@
-Component({
-    externalClasses: ['wux-class'],
-    relations: {
-        '../row/index': {
-            type: 'parent',
-        },
-    },
-    properties: {
-        span: {
-            value: 0,
-            type: Number,
-        },
-        offset: {
-            value: 0,
-            type: Number,
-        },
-        pull: {
-            value: 0,
-            type: Number,
-        },
-        push: {
-            value: 0,
-            type: Number,
-        },
-    },
-    data: {
-        colStyle: '',
-    },
-    methods: {
-        updateStyle(colStyle) {
-            if (this.data.colStyle !== colStyle) {
-                this.setData({
-                    colStyle,
-                })
-            }
-        },
-    },
-})
+import { create } from '../common/create';
+
+create({
+  relations: {
+    '../row/index': {
+      type: 'ancestor'
+    }
+  },
+
+  props: {
+    span: Number,
+    offset: Number
+  },
+
+  computed: {
+    classes() {
+      const { span, offset } = this.data;
+      return this.classNames('custom-class', 'van-col', {
+        [`van-col--${span}`]: span,
+        [`van-col--${offset}`]: offset
+      });
+    }
+  },
+
+  methods: {
+    setGutter(gutter) {
+      const padding = `${gutter / 2}px`;
+      const style = gutter ? `padding-left: ${padding}; padding-right: ${padding};` : '';
+      if (style !== this.data.style) {
+        this.setData({ style });
+      }
+    }
+  }
+});

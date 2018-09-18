@@ -1,22 +1,31 @@
-<view class="wux-class wux-notice-bar" wx:if="{{ visible }}" bindtap="onClick">
-    <view class="wux-notice-bar__hd">
-        <image class="wux-notice-bar__icon" src="{{ icon }}" wx:if="{{ icon }}" />
-        <block wx:else>
-            <slot name="header"></slot>
-        </block>
+<view
+  wx:if="{{ show }}"
+  class="custom-class van-notice-bar {{ hasRightIcon ? 'van-notice-bar--within-icon' : '' }}"
+  style="color: {{ color }};background-color: {{ backgroundColor }}"
+  bind:tap="onClick"
+>
+  <view wx:if="{{ leftIcon }}" class="van-notice-bar__left-icon">
+    <image src="{{ leftIcon }}" />
+  </view>
+  <view class="van-notice-bar__content-wrap">
+    <view class="van-notice-bar__content" animation="{{ animationData }}">
+      {{ text }}
     </view>
-    <view class="wux-notice-bar__bd">
-        <view class="wux-notice-bar__marquee-container">
-            <view class="wux-notice-bar__marquee" style="transform: translate3d({{ -animatedWidth + 'px' }}, 0px, 0px)">
-                <block wx:if="{{ content }}">{{ content }}</block>
-                <slot></slot>
-            </view>
-        </view>
-    </view>
-    <view class="wux-notice-bar__ft" catchtap="onAction" wx:if="{{ mode === 'closable' || mode === 'link' }}">
-        <image class="wux-notice-bar__action" src="{{ action }}" wx:if="{{ action }}" />
-        <block wx:else>
-            <slot name="footer"></slot>
-        </block>
-    </view>
+  </view>
+
+  <block wx:if="{{ mode }}">
+    <van-icon
+      wx:if="{{ mode === 'closeable' }}"
+      class="van-notice-bar__right-icon"
+      name="close"
+      bind:tap="onClickIcon"
+    />
+    <navigator
+      wx:if="{{ mode === 'link' }}"
+      url="{{ url }}"
+      open-type="{{ openType }}"
+    >
+      <van-icon class="van-notice-bar__right-icon" name="arrow" />
+    </navigator>
+  </block>
 </view>

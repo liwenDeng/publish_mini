@@ -1,32 +1,24 @@
-Component({
-    externalClasses: ['wux-class'],
-    options: {
-        multipleSlots: true,
-    },
-    properties: {
-        bordered: {
-            type: Boolean,
-            value: true,
-        },
-        full: {
-            type: Boolean,
-            value: false,
-        },
-        title: {
-            type: String,
-            value: '',
-        },
-        thumb: {
-            type: String,
-            value: '',
-        },
-        thumbStyle: {
-            type: String,
-            value: '',
-        },
-        extra: {
-            type: String,
-            value: '',
-        },
-    },
-})
+import { create } from '../common/create';
+
+create({
+  classes: [
+    'thumb-class',
+    'title-class',
+    'price-class',
+    'desc-class',
+    'num-class'
+  ],
+
+  props: {
+    num: String,
+    desc: String,
+    thumb: String,
+    title: String,
+    price: String,
+    centered: Boolean,
+    currency: {
+      type: String,
+      value: '¥'
+    }
+  }
+});
