@@ -16,7 +16,7 @@
     <view class='input_form'>
       <van-field name='linkman' value="{{linkman}}" clearable label="联系人：" placeholder="请输入联系人" />
       <van-field name='phone' clearable label="联系方式：" type="number" placeholder="请输入您的联系方式" />
-      <van-field name='location' value="{{location}}" clearable label="具体位置：" placeholder="请输入具体位置" icon="location" bind:click-icon="onClickLocation" />
+      <van-field name='location' value="{{location}}" clearable label="具体位置：" placeholder="请地址或点击地图选择" icon="location" bind:click-icon="onClickLocation" />
       <van-field name='area' value="{{area}}" is-link label="发布地区：" disabled='true' bindtap='onClickPublishArea' />
       <van-field value="{{price}}元（{{area}}）" disabled='true' border="false" label="发布费用：" />
     </view>

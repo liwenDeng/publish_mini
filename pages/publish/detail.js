@@ -57,7 +57,16 @@ Page({
   },
   // 点击定位
   onClickLocation: function(){
-    console.log('定位');
+    console.log('选择地址');
+    var that = this;
+    wx.chooseLocation({
+      complete: function(res) {
+        console.log(res);
+        that.setData({
+          location: res.address
+        })
+      }
+    })
   },
   onClickPublishArea: function(e) {
     console.log('选择发布地区')

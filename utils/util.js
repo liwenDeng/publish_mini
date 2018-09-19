@@ -50,7 +50,39 @@ const formatPrice = price => {
   return number_format(price, 2, ".")
 }
 
+// 获取定位信息
+// 文档 https://lbs.qq.com/qqmap_wx_jssdk/method-reverseGeocoder.html
+const getLocation = (result = (() => {})) => {
+  var QQMapWX = require('../common/qqmap-wx-jssdk/qqmap-wx-jssdk.js');
+  let mapAppKey = "DT7BZ-VMS3S-FABOA-6J453-AIWC5-SOBF4"; //腾讯地图key
+  // 实例化API核心类
+  var map = new QQMapWX({
+    key: mapAppKey // 必填
+  });
+  // 调用接口
+  wx.getLocation({
+    success: function(res) {
+      map.reverseGeocoder({
+        location: {
+          latitude: res.latitude,
+          longitude: res.longitude
+        },
+        success: function(res) {
+          console.log(res.result.address);
+        },
+        fail: function(res) {
+          result("")
+        }
+      });
+    },
+    fail: function(res) {
+      result("")
+    }
+  })
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatPrice: formatPrice
+  formatPrice: formatPrice,
+  getLocation: getLocation
 }
