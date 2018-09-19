@@ -1,5 +1,4 @@
 // pages/category/index.js
-import util from '../../utils/util.js'
 import { requestApi } from '../../common/network/http.js';
 Page({
 
@@ -101,8 +100,5 @@ Page({
   },
   onPhoneCall: function(e) {
     console.log('点击了拨打电话按钮');
-    util.getLocation((res) =>{
-      console.log("定位",res);
-    });
   },
 })

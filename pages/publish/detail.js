@@ -1,4 +1,5 @@
 // pages/publish/detail.js
+import util from '../../utils/util.js'
 Page({
 
   /**
@@ -6,8 +7,8 @@ Page({
    */
   data: {
     pics: [],
-    linkman: "黄瓜啊",
-    location:'位置',
+    linkman: "",
+    location:'',
     area:'本地',
     price:0.1,
     isTop: false,//是否置顶
@@ -19,7 +20,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    var that = this
+    // 位置信息
+    util.getLocation((res) => {
+      that.setData({
+        location: res
+      })
+    });
+    // 用户名- getUserInfo不可用,如需用户名，需要强制获取用户信息授权
+    // wx.getUserInfo({
+    //   success: function(res){
+    //     var userInfo = res.userInfo
+    //     var nickName = userInfo.nickName
+    //     that.setData({
+    //       linkman: nickName
+    //     })
+    //   }
+    // })
   },
   /**
    * 用户点击右上角分享

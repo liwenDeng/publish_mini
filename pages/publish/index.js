@@ -64,6 +64,8 @@ Page({
 
   },
   onPublishCate: function(e) {
+    //先检测是否有授权用户信息
+    
     console.log("发布信息", e.detail.cate);
     wx.navigateTo({
       url: 'detail'
