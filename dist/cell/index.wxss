@@ -61,7 +61,7 @@
 }
 
 .van-cell::after {
-  margin-left: 15px;
+  /* margin-left: 15px; */
   border-bottom-width: 1px;
 }
 

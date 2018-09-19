@@ -84,14 +84,15 @@
 }
 .instructions{
   width: 100%;
-  margin-left: 24rpx;
   margin-top: 24rpx;
   margin-bottom: 200rpx;
   display: flex;
   font-size: 28rpx;
   align-items: center;
+  box-sizing: border-box;
 }
 .agreeIcon{
+  margin-left: 24rpx;
   width: 40rpx;
   height: 40rpx;
   background-color: red;
