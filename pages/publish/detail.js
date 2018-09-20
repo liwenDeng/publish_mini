@@ -9,6 +9,17 @@ Page({
     pics: [],
     linkman: "",
     location:'',
+    areaIndex: 0,
+    areaOptions:[
+      {
+        id: 0,
+        name: '本地'
+      },
+      {
+        id: 1,
+        name: '全国'
+      }
+    ],
     area:'本地',
     price:0.1,
     isTop: false,//是否置顶
@@ -77,7 +88,7 @@ Page({
     console.log('选择地址');
     var that = this;
     wx.chooseLocation({
-      complete: function(res) {
+      success: function(res) {
         console.log(res);
         that.setData({
           location: res.address
@@ -85,8 +96,11 @@ Page({
       }
     })
   },
-  onClickPublishArea: function(e) {
-    console.log('选择发布地区')
+  onAreaPickerChange: function(e) {
+    console.log('选择发布地区，携带值为', e.detail.value)
+    this.setData({
+      areaIndex: e.detail.value
+    })
   },
   onTopChange: function(e) {
     var that = this;
