@@ -1,10 +1,11 @@
 {
   "pages": [
-    "pages/category/index",
+    "pages/index/index",
     "pages/publish/index",
     "common/component/cell/cell",
     "common/component/cates_grid/index",
-    "pages/publish/detail"
+    "pages/publish/detail",
+    "pages/ucenter/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -15,16 +16,22 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/category/index",
-        "text": "分类信息",
-        "iconPath": "static/img/tab_category.png",
-        "selectedIconPath": "static/img/tab_category_press.png"
+        "pagePath": "pages/index/index",
+        "iconPath": "static/img/ic_menu_choice_nor.png",
+        "selectedIconPath": "static/img/ic_menu_choice_pressed.png",
+        "text": "分类信息"
       },
       {
         "pagePath": "pages/publish/index",
-        "text": "发布",
         "iconPath": "static/img/tab_add.png",
-        "selectedIconPath": "static/img/tab_add_press.png"
+        "selectedIconPath": "static/img/tab_add_press.png",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/ucenter/index",
+        "iconPath": "static/img/ic_menu_me_nor.png",
+        "selectedIconPath": "static/img/ic_menu_me_pressed.png",
+        "text": "个人中心"
       }
     ]
   }

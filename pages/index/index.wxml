@@ -1,0 +1,43 @@
+<view class="page">
+  <view class="search">
+    <view class="location">
+      成都市
+    </view>
+    <view class="triangle-up">
+    </view>
+    <view class="search_input_view">
+      <icon size='12' type='search'></icon>
+      <input class='search_input' placeholder-class="search_placeholder" auto-focus placeholder="找服务、找需求"/>
+    </view>
+  </view>
+  <view class="index_cate">
+      <view class="single_cate" wx:for="{{cates}}" wx:for-item="cate" data-cate="{{cate.id}}">
+        <image src="{{cate.icon}}" width="10rpx" height="10rpx"></image>
+        <view class="single_cate_name">{{cate.name}}</view>
+      </view>
+  </view>
+  <view class="space_10_withcolor"></view>
+  <view class="notice_bar"> 
+    <view class="calendar">10-17 星期三</view>
+    <view class="vertical_line_1px"></view> 
+    <view class="notice_ad">快讯头条</view>
+    <swiper class="notice_swiper" autoplay="true" interval="3000" vertical="false" circular="true">
+      <block wx:for="{{noticeList}}">
+        <swiper-item>
+          <view class="notice_item">{{item.title}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+   <view class="space_10_white"></view>
+  <view class="index_ad">
+    广告位
+  </view>
+  <view class="space_10_withcolor"></view>
+  <view class="content_container">
+    <list-cell wx:for="{{cates}}" wx:for-item="cate" title="{{cate.name}}"></list-cell>
+  </view>
+</view>
+
+
+ 

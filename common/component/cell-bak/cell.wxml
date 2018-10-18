@@ -1,0 +1,40 @@
+<!--common/component/cell/cell.wxml-->
+<view class='cell'>
+  <view class='title_section row_container'>
+    <view class='row_container'>
+      <image class='cell_avatar'></image>
+      <view class='column_container'>
+        <text class='cell_title'>舌尖上的美味传奇</text>
+        <view class='row_container'>
+          <van-tag class="tag" plain type="danger">置顶</van-tag >
+          <van-tag class="tag" plain type="primary">个人求职</van-tag >
+        </view>
+      </view>
+    </view>
+    <view class='call' bindtap='onPhoneCall'>
+      <text>拨打电话</text>
+    </view>
+  </view>
+  <text class='cell_content'>每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</text>
+  <view class='cell_thumbnail_container row_container'>
+    <image class='cell_thumbnail'></image>
+    <image class='cell_thumbnail'></image>
+    <image class='cell_thumbnail'></image>
+    <image class='cell_thumbnail'></image>
+  </view>
+  <view class='date_container'>
+    <text>2018-09-17 09：08发布</text>
+  </view>
+  <view class='cell_location_container'>
+    <image class='cell_location_icon'></image>
+    <text class='cell_location_text'>广东省深圳市龙岗区福坑路</text>
+  </view>
+  <view class='cell_visit_container'>
+    <image class='cell_visit_icon'></image>
+    <text class='cell_visit_number'>53997</text>
+    <text>人浏览</text>
+    <image class='cell_zan_icon'></image>
+    <text class='cell_visit_number'>15</text>
+    <text>人点赞</text>
+  </view>
+</view>

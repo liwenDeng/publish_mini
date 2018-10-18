@@ -1,0 +1,106 @@
+/* common/component/cell/cell.wxss */
+.cell {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin-top: 14rpx;
+  padding: 24rpx;
+}
+
+.title_section {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.row_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.column_container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24rpx;
+  padding-right: 24rpx;
+}
+
+.cell_avatar {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: red;
+}
+
+.cell_title {
+  display: inline-block;
+  color: rgb(17, 78, 78);
+  font-size: 30rpx;
+}
+
+.cell_thumbnail_container {
+  padding-top: 14rpx;
+  justify-content: flex-start;
+}
+
+.cell_thumbnail {
+  width: 165rpx;
+  height: 160rpx;
+  background-color: red;
+  margin-right: 12rpx;
+}
+
+.cell_content {
+  display: block;
+  font-size: 28rpx;
+  padding-top: 14rpx;
+}
+
+.date_container {
+  font-size: 24rpx;
+  padding-top: 10rpx;
+}
+
+.cell_location_container {
+  padding-top: 5rpx;
+  display: flex;
+  align-items: center;
+}
+
+.cell_location_icon {
+  width: 24rpx;
+  height: 24rpx;
+  background-color: red;
+}
+
+.cell_location_text {
+  font-size: 24rpx;
+  padding-left: 8rpx;
+}
+
+.cell_visit_container {
+  display: flex;
+  flex-direction: row;
+  font-size: 24rpx;
+  align-items: center;
+}
+
+.cell_visit_icon {
+  background-color: rebeccapurple;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.cell_visit_number {
+  display: inline-flex;
+  padding-left: 8rpx;
+  color: blue;
+}
+
+.cell_zan_icon {
+  background-color: rebeccapurple;
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 14rpx;
+}
+.tag {
+  margin-right: 15rpx;
+}

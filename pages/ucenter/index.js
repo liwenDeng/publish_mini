@@ -1,4 +1,4 @@
-// common/component/cell/cell.js
+// pages/ucenter/index.js
 Component({
   /**
    * Component properties
