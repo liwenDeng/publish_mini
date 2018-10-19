@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/location/index",
     "pages/publish/index",
     "common/component/cell/cell",
     "common/component/cates_grid/index",
@@ -22,7 +23,7 @@
         "text": "分类信息"
       },
       {
-        "pagePath": "pages/publish/index",
+        "pagePath": "pages/publish/detail",
         "iconPath": "static/img/tab_add.png",
         "selectedIconPath": "static/img/tab_add_press.png",
         "text": "发布"

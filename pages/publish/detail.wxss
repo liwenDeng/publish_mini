@@ -85,7 +85,7 @@
 .instructions{
   width: 100%;
   margin-top: 24rpx;
-  margin-bottom: 200rpx;
+  margin-bottom: 70rpx;
   display: flex;
   font-size: 28rpx;
   align-items: center;
@@ -109,7 +109,7 @@
 .nextStep{
   width: 100%;
   background-color: #db4f4f;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   color: white;
   font-size: 36rpx;

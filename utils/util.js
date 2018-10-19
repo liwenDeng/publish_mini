@@ -72,7 +72,8 @@ const getLocation = (result = (() => {})) => {
               longitude: res.longitude
             },
             success: function(res) {
-              result(res.result.address)
+              result(res.result.address_component)
+              //result(res.result.address)
             },
             fail: function(res) {
               result("")

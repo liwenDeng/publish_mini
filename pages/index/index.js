@@ -1,10 +1,11 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+import util from "../../utils/util.js"
 Page({
   data: {
     active : 0,
+    location:"",
     countryList: ['中国', '美国', '英国', '日本', '韩国', '巴西', '德国'],
     region:["四川省","成都市","高新区"],
     cates:[
@@ -75,6 +76,12 @@ Page({
     ],
     "test":12
   },
+  choseLocation: function(e) {
+    console.log("test")
+    wx.navigateTo({
+      url: '../location/index',
+    })
+  },
   changeRegion: function(e) {
     this.setData({region : e.detail.value})
   },
@@ -88,6 +95,12 @@ Page({
     console.log(e.detail.value)
   },
   onLoad: function () {
+    var that = this
+    util.getLocation((res) => {
+      that.setData({
+        location: res.city
+      })
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

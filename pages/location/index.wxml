@@ -1,0 +1,7 @@
+<!--pages/location/index.wxml-->
+<view class='page'>
+  <view class='current_location_label'>
+    <view class='current_location_space'>当前位置：{{location}}</view>
+  </view>
+  <view>地区选择</view>
+</view>

@@ -10,6 +10,59 @@ Page({
     linkman: "",
     location:'',
     areaIndex: 0,
+    channelIndex:0,
+    channels: [
+      {
+        "id": 1,
+        "name": "租房",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 2,
+        "name": "旅游",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 3,
+        "name": "教育",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 4,
+        "name": "母婴",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 5,
+        "name": "软件硬件",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 6,
+        "name": "跑腿",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 7,
+        "name": "餐饮",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 8,
+        "name": "二手书籍",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 9,
+        "name": "租房",
+        "icon": "images/ic_menu_me_pressed.png"
+      },
+      {
+        "id": 9,
+        "name": "租房",
+        "icon": "images/ic_menu_me_pressed.png"
+      }
+    ],
     areaOptions:[
       {
         id: 0,
@@ -35,7 +88,8 @@ Page({
     // 位置信息
     util.getLocation((res) => {
       that.setData({
-        location: res
+         location: res.province+res.city+res.district+res.street_number
+        //location:res
       })
     });
     // 用户名- getUserInfo不可用,如需用户名，需要强制获取用户信息授权
@@ -100,6 +154,11 @@ Page({
     console.log('选择发布地区，携带值为', e.detail.value)
     this.setData({
       areaIndex: e.detail.value
+    })
+  },
+  onChannelPickerChange: function(e) {
+    this.setData({
+      channelIndex: e.detail.value
     })
   },
   onTopChange: function(e) {

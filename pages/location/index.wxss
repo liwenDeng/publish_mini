@@ -1,0 +1,39 @@
+/* pages/location/index.wxss */
+
+.current_location_label {
+  font-family:"iconfont" !important;
+  font-size:22rpx;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F2F2F2;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  
+}
+.current_location_space {
+  margin-left: 20rpx;
+}
+
+.current_location_content {
+  display: flex;
+  flex-direction: row;
+  font-family:"iconfont" !important;
+  font-size:22rpx;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.current_location_space image {
+  width:40rpx;
+  background-color: red;
+  display: inline-flex
+}
+.map_img{
+   width:40rpx;
+}
+
