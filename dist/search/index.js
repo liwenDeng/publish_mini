@@ -1,10 +1,7 @@
-import { create } from '../common/create';
-
-create({
+import { VantComponent } from '../common/component';
+VantComponent({
   field: true,
-
   classes: ['cancel-class'],
-
   props: {
     focus: Boolean,
     disabled: Boolean,
@@ -12,6 +9,7 @@ create({
     showAction: Boolean,
     useActionSlot: Boolean,
     placeholder: String,
+    placeholderStyle: String,
     background: {
       type: String,
       value: '#f2f2f2'
@@ -21,27 +19,27 @@ create({
       value: -1
     }
   },
-
   methods: {
-    onChange(event) {
+    onChange: function onChange(event) {
+      this.setData({
+        value: event.detail
+      });
       this.$emit('change', event.detail);
     },
-
-    onCancel() {
-      this.setData({ value: '' });
+    onCancel: function onCancel() {
+      this.setData({
+        value: ''
+      });
       this.$emit('cancel');
       this.$emit('change', '');
     },
-
-    onSearch() {
+    onSearch: function onSearch() {
       this.$emit('search', this.data.value);
     },
-
-    onFocus() {
+    onFocus: function onFocus() {
       this.$emit('focus');
     },
-
-    onBlur() {
+    onBlur: function onBlur() {
       this.$emit('blur');
     }
   }

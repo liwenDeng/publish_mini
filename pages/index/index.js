@@ -77,7 +77,6 @@ Page({
     "test":12
   },
   choseLocation: function(e) {
-    console.log("test")
     wx.navigateTo({
       url: '../location/index',
     })
