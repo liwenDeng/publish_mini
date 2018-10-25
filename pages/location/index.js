@@ -50,7 +50,7 @@ Page({
       county: this.data.county
     };
     wx.setStorage({
-      key: 'area',
+      key: 'location',
       data: area,
     })
     console.log('提交定位信息', area);

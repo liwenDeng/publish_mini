@@ -4,15 +4,14 @@ const app = getApp()
 import util from "../../utils/util.js"
 Page({
   data: {
-    active : 0,
-    location:"",
+    active: 0,
+    location: "",
     countryList: ['中国', '美国', '英国', '日本', '韩国', '巴西', '德国'],
-    region:["四川省","成都市","高新区"],
-    cates:[
-      {
-        "id":1,
-        "name":"租房",
-        "icon":"images/ic_menu_me_pressed.png"
+    region: ["四川省", "成都市", "高新区"],
+    cates: [{
+        "id": 1,
+        "name": "租房",
+        "icon": "images/ic_menu_me_pressed.png"
       },
       {
         "id": 2,
@@ -60,10 +59,9 @@ Page({
         "icon": "images/ic_menu_me_pressed.png"
       }
     ],
-    noticeList:[
-      {
-        "id":1,
-        "title":"2018.11.1 停机维护"
+    noticeList: [{
+        "id": 1,
+        "title": "2018.11.1 停机维护"
       },
       {
         "id": 2,
@@ -74,7 +72,7 @@ Page({
         "title": "快讯与腾讯达成战略合作"
       }
     ],
-    "test":12
+    "test": 12
   },
   choseLocation: function(e) {
     wx.navigateTo({
@@ -82,7 +80,9 @@ Page({
     })
   },
   changeRegion: function(e) {
-    this.setData({region : e.detail.value})
+    this.setData({
+      region: e.detail.value
+    })
   },
   //事件处理函数
   bindViewTap: function() {
@@ -93,19 +93,17 @@ Page({
   switch1Change: function(e) {
     console.log(e.detail.value)
   },
-  onLoad: function () {
+  onShow: function() {
+    this.getLocation();
+  },
+  onLoad: function() {
     var that = this
-    util.getLocation((res) => {
-      that.setData({
-        location: res.city
-      })
-    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -134,5 +132,25 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+  // 获取位置信息
+  getLocation: function() {
+    var that = this;
+    wx.getStorage({
+      key: 'location',
+      success: function (res) {
+        console.log(res);
+        that.setData({
+          location: res.data.city
+        });
+      },
+      fail: function() {
+        util.getLocation((res) => {
+          that.setData({
+            location: res.city
+          })
+        })
+      }
+    });
+  },
 })
